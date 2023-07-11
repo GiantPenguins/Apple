@@ -1,2 +1,1 @@
-# Apple
-An E-Commerce website for Apple.
+Run `serve` to start the server.
