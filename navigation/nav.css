@@ -100,13 +100,10 @@
   }
 }
 
-/* The dropdown container */
 .dropdown {
-  overflow: hidden;
-  display: inline-block;
+  position: relative;
 }
 
-/* Dropdown button */
 .dropdown .dropbtn {
   border: none;
   outline: none;
@@ -117,44 +114,47 @@
   margin-right: 48px;
 }
 
-/* Add a red background color to navbar links on hover */
-.navbar a:hover,
-.dropdown:hover .dropbtn {
+.dropbtn:hover {
   filter: blur(1px);
-  transition: 0.2s;
 }
 
-/* Dropdown content (hidden by default) */
-.dropdown-content {
-  display: none;
+.dropdown .dropdown-content {
   position: absolute;
-  color: var(--main-gray);
-  text-shadow: 1px 1px 1px rgba(118, 108, 127, 0.1);
-  min-width: 160px;
+  border-radius: 15px;
+  top: 100%;
+  right: 0;
+  width: 90vw;
+  height: 85vh;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
+  opacity: 0; /* Set initial opacity to 0 */
+  transition: opacity 0.6s, transform 0.6s, max-height 0.6s; /* Add transition for opacity, transform, and max-height */
+  transform: translateY(
+    10px
+  ); /* Move the content down slightly to hide it initially */
+  font-family: var(--main-font);
+  max-height: 0; /* Set initial max-height to 0 */
+  overflow: hidden; /* Hide the content that overflows the max-height */
 }
 
-/* Links inside the dropdown */
-.dropdown-content a {
+.dropdown .dropdown-content a {
   padding: 12px 16px;
-  width: 20vw;
-  height: 20vh;
   text-decoration: none;
   transition: 0.6s;
   display: block;
   color: var(--main-gray);
-  text-shadow: 1px 1px 1px rgba(118, 108, 127, 0.1);
 }
 
-/* Add a grey background color to dropdown links on hover */
-.dropdown-content a:hover {
+.dropdown .dropdown-content a:hover {
   color: var(--main-gray);
   text-shadow: 1px 1px 1px rgba(118, 108, 127, 0.1);
   transition: 0.2s;
+  transform: scale(1.5);
+  margin-left: 30vw;
 }
 
-/* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {
-  display: block;
+  opacity: 1;
+  transform: translateY(0); /* Move the content back up to show it */
+  max-height: 1000px; /* Set a value larger than the expected content height */
 }
