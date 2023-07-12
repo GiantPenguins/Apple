@@ -1,4 +1,5 @@
 .navbar {
+  position: relative;
   background-color: var(--platinum);
   display: flex;
   align-items: center;
@@ -55,6 +56,7 @@
   cursor: pointer;
   padding: 5px;
   display: none;
+  transition: 0.6s;
 }
 
 .navbar-toggler-icon {
@@ -68,9 +70,14 @@
   }
 
   .navbar-logo {
-    display: inline-block; /* Added */
-    height: 30px; /* Added */
-    margin-right: 10px; /* Added */
+    display: inline-block;
+    height: 30px;
+    margin-right: 10px;
+  }
+
+  .navbar-logo:hover {
+    filter: blur(1px);
+    transition: 0.2s;
   }
 
   .navbar-toggler {
@@ -79,24 +86,41 @@
 
   .navbar-collapse {
     display: none;
+    opacity: 0; /* Add initial opacity */
+    transition: opacity 0.6s;
   }
 
   .navbar-collapse.show {
     display: block;
     position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    opacity: 1; /* Set opacity to 1 when shown */
   }
 
   .navbar-nav {
     flex-direction: column;
     align-items: flex-start;
-    background-color: var(--main-gray);
+    background-color: var(--platinum);
+    border: 1px solid rgba(118, 108, 127, 0.05);
+    border-radius: 15px;
+    transition: 0.6s; /* Add transition duration */
     padding: 10px;
     margin-top: 10px;
+    position: absolute;
+    z-index: 1;
   }
 
   .navbar-nav .nav-item {
     margin-right: 0;
     margin-bottom: 5px;
+  }
+
+  .navbar-logo:hover ~ .navbar-collapse,
+  .navbar-collapse:hover {
+    display: block;
+    opacity: 1;
   }
 }
 
@@ -111,7 +135,6 @@
   background-color: var(--platinum);
   font-size: 1rem;
   font-family: var(--main-font);
-  margin-right: 48px;
 }
 
 .dropbtn:hover {
@@ -123,18 +146,16 @@
   border-radius: 15px;
   top: 100%;
   right: 0;
-  width: 90vw;
+  width: 70vw;
   height: 85vh;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  opacity: 0; /* Set initial opacity to 0 */
-  transition: opacity 0.6s, transform 0.6s, max-height 0.6s; /* Add transition for opacity, transform, and max-height */
-  transform: translateY(
-    10px
-  ); /* Move the content down slightly to hide it initially */
+  opacity: 0;
+  transition: opacity 0.6s, transform 0.6s, max-height 0.6s;
+  transform: translateY(10px);
   font-family: var(--main-font);
-  max-height: 0; /* Set initial max-height to 0 */
-  overflow: hidden; /* Hide the content that overflows the max-height */
+  max-height: 0;
+  overflow: hidden;
 }
 
 .dropdown .dropdown-content a {
@@ -155,6 +176,6 @@
 
 .dropdown:hover .dropdown-content {
   opacity: 1;
-  transform: translateY(0); /* Move the content back up to show it */
-  max-height: 1000px; /* Set a value larger than the expected content height */
+  transform: translateY(0);
+  max-height: 1000px;
 }
